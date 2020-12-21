@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/KcolorYellow</color>
+    <color name="colorPrimaryDark">@color/KcolorYellowDark</color>
+    <color name="colorAccent">#03DAC5</color>
+
+
+
+
+
+    <color name="KcolorYellow">#F9A825</color>
+    <color name="KcolorYellowDark">#E3910D</color>
+    <color name="KcolorGrey">#424242</color>
+
+
+
+
+
+
+</resources>
