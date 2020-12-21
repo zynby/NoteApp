@@ -6,13 +6,18 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50156197-725d-4e85-88b3-e67528dd5cb2" name="Default Changelist" comment="" />
+    <list default="true" id="50156197-725d-4e85-88b3-e67528dd5cb2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/shariati/notes/CreateNoteActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_note.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="LGM70028dbcc2b" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5_API_24" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -29,7 +34,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1lvboLuDqyqcpI0yQRv80eGtcfu" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -48,6 +55,9 @@
   </component>
   <component name="RecentsManager">
     <key name="android.template.1041489606">
+      <recent name="com.shariati.notes" />
+    </key>
+    <key name="android.template.-514348606">
       <recent name="com.shariati.notes" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
