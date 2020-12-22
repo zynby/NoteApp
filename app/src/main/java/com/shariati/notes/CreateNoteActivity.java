@@ -41,7 +41,7 @@ public class CreateNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_note_activity);
+        setContentView(R.layout.activity_create_note);
         note = findViewById(R.id.editTextNote);
         title = findViewById(R.id.editTextTitle);
         save = findViewById(R.id.save);
@@ -58,7 +58,7 @@ public class CreateNoteActivity extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CreateNoteActivity.this, HomeActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(CreateNoteActivity.this, HomePage.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK));
                 finish();
             }
         });
@@ -93,7 +93,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     pd.dismiss();
                     Toast.makeText(CreateNoteActivity.this, "Save Note Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CreateNoteActivity.this, HomeActivity.class);
+                    Intent intent = new Intent(CreateNoteActivity.this, HomePage.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();

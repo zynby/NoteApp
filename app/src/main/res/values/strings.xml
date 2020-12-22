@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">NOTE ON</string>
+    <string name="already_nhave_an_naccount">Already have an Account?</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="create_note_title_hint">Title</string>
+    <string name="create_note_note_hint">Note</string>
+    <string name="login">Login</string>
+    <string name="new_user_register_now">New user? Register Now</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="use_other_methods">Use other Methods</string>
+    <string name="here_s_your_first_step_with_us">Here’s your first step with us!</string>
+    <string name="name">Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="register">Register</string>
+    <string name="todo">TODO</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
+
