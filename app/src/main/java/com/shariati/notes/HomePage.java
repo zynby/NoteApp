@@ -20,7 +20,7 @@ public class HomePage extends AppCompatActivity {
         addNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /// startActivity(new Intent(HomeActivity.this, CreateNoteActivity.class));
+                startActivity(new Intent(HomePage.this, CreateNoteActivity.class));
             }
         });
     }
