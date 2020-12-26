@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NOTE ON</string>
+    <string name="app_name">MyNote</string>
     <string name="already_nhave_an_naccount">Already have an Account?</string>
     <string name="login_email_hint">Email</string>
     <string name="login_password_hint">Password</string>

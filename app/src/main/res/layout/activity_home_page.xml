@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,14 +20,27 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom|right"
             android:layout_margin="25dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/primaryColor"
             android:clickable="true"
             android:src="@drawable/ic_add_black_24dp"
-            app:backgroundTint="@color/colorPrimary"
+            app:backgroundTint="@color/primaryColor"
             app:fabSize="normal"
             app:maxImageSize="40dp"
             app:rippleColor="#FFFFFF" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleNote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@+id/coordinatorLayout3"
+            app:spanCount="2"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="2dp"
+            tools:listitem="@layout/note_template" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

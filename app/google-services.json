@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "650348934297",
+    "firebase_url": "https://nedaprj-315a0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "nedaprj-315a0",
+    "storage_bucket": "nedaprj-315a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650348934297:android:6b2622c7013302137fb408",
+        "android_client_info": {
+          "package_name": "com.shariati.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650348934297-j8llq2iirf06hkudq5ch361vbbqcn6r2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shariati.notes",
+            "certificate_hash": "cd6efd2bda2197853c6f27907a509dafd46e8209"
+          }
+        },
+        {
+          "client_id": "650348934297-pv5pj5335v2nrhbjjrsu8hbsqgt1sqrm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpVQbApyMeN8W4Ms8vWLo7UfVuFjJqLtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650348934297-pv5pj5335v2nrhbjjrsu8hbsqgt1sqrm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

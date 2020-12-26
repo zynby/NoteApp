@@ -1,10 +1,10 @@
 package com.shariati.notes;
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -21,14 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.shariati.notes.R;
 
-import java.util.Date;
 import java.util.HashMap;
 
 public class CreateNoteActivity extends AppCompatActivity {
     private EditText note;
     private EditText title;
-    private FloatingActionButton save;
-    private FloatingActionButton cancel;
+    private Button save;
+    private Button cancel;
 
 
     private CoordinatorLayout coordinatorLayout;
@@ -48,12 +47,11 @@ public class CreateNoteActivity extends AppCompatActivity {
         cancel = findViewById(R.id.cancel);
 
 
-        coordinatorLayout = findViewById(R.id.coordinatorLayout);
 
         pd = new ProgressDialog(this);
 
 
-        mRootRef = FirebaseDatabase.getInstance().getReference();
+        mRootRef = FirebaseDatabase.getInstance("https://nedaprj-315a0-default-rtdb.europe-west1.firebasedatabase.app/").getReference();
         mAuth = FirebaseAuth.getInstance();
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,36 +66,34 @@ public class CreateNoteActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String txtTitle = title.getText().toString().trim();
                 String txtNote = note.getText().toString().trim();
-                Date creationDate = new Date();
                 Boolean flag = validationFields(txtNote, txtTitle);
                 if (flag) {
-                    saveNote(txtTitle, txtNote, creationDate);
+                    saveNote(txtTitle, txtNote);
                 }
             }
         })
         ;}
 
-    private void saveNote(String txtTitle, String txtNote, Date creationDate) {
+
+    private void saveNote(String txtTitle, String txtNote) {
         pd.setMessage("Please Wait");
         pd.show();
         mRootRef = mRootRef.child("Note");
+        String noteId = mRootRef.push().getKey();
 
         HashMap<String, Object> mapNote = new HashMap<>();
         mapNote.put("title", txtTitle);
         mapNote.put("note", txtNote);
-        mapNote.put("creation_date", creationDate);
-        mapNote.put("publisher", mAuth.getCurrentUser().getUid());
-        mRootRef.push().setValue(mapNote).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mapNote.put("creation_date", System.currentTimeMillis());
+        mRootRef.child(mAuth.getCurrentUser().getUid()).child(noteId).setValue(mapNote).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
                     pd.dismiss();
                     Toast.makeText(CreateNoteActivity.this, "Save Note Successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(CreateNoteActivity.this, HomePage.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
-                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

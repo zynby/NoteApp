@@ -29,10 +29,7 @@ import java.util.HashMap;
 
 
 public class RegisterActivity extends AppCompatActivity {
-    private final String regexMobile = "^(\\+98|0098|98|0)?9\\d{9}$";
     private final String regexEmail = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-    private final String regexPassword = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$";
-    private final String regexUsername = "^[a-z0-9_.]{3,16}$";
     private EditText username;
     private EditText email;
     private EditText password;
@@ -49,11 +46,9 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        changeStatusBarColor();
 
         username = findViewById(R.id.editTextName);
         email = findViewById(R.id.editTextEmail);
-        mobile = findViewById(R.id.editTextMobile);
         password = findViewById(R.id.editTextPassword);
         registerButton = findViewById(R.id.cirRegisterButton);
 
@@ -67,28 +62,25 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String txtUsername = username.getText().toString();
-                String txtMobile = mobile.getText().toString();
                 String txtEmail = email.getText().toString();
                 String txtPassword = password.getText().toString();
 
-                if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtMobile) || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword)) {
+                if (TextUtils.isEmpty(txtUsername) || TextUtils.isEmpty(txtEmail) || TextUtils.isEmpty(txtPassword)) {
                     Toast.makeText(RegisterActivity.this, "Empty Fields!", Toast.LENGTH_SHORT).show();
-                } else if (!(txtMobile.matches(regexMobile))) {
-                    Toast.makeText(RegisterActivity.this, "Mobile Number Not Valid!", Toast.LENGTH_SHORT).show();
                 } else if (!(txtEmail.matches(regexEmail))) {
                     Toast.makeText(RegisterActivity.this, "Email Not Valid!", Toast.LENGTH_SHORT).show();
-                } else if (!(txtPassword.matches(regexPassword))) {
-                    Toast.makeText(RegisterActivity.this, "Password Not Valid", Toast.LENGTH_SHORT).show();
-                } else if (!(txtUsername.matches(regexUsername))) {
+                } else if (! (txtPassword.length() >= 6)) {
+                    Toast.makeText(RegisterActivity.this, "minimum password length is 6", Toast.LENGTH_SHORT).show();
+                } else if (!(txtUsername.length() >= 3)) {
                     Toast.makeText(RegisterActivity.this, "Username Not Valid", Toast.LENGTH_SHORT).show();
                 } else {
-                    registerUser(txtUsername, txtMobile, txtEmail, txtPassword);
+                    registerUser(txtUsername,  txtEmail, txtPassword);
                 }
             }
         });
     }
 
-    private void registerUser(final String username, final String mobile, final String email, final String password) {
+    private void registerUser(final String username, final String email, final String password) {
 
         pd.setMessage("Please Wait");
         pd.show();
@@ -97,25 +89,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
 
-                HashMap<String, Object> map = new HashMap<>();
-                map.put("mobile", mobile);
-                map.put("email", email);
-                map.put("username", username);
-                map.put("id", mAuth.getCurrentUser().getUid());
+                pd.dismiss();
+                Toast.makeText(RegisterActivity.this, "Register is Successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(RegisterActivity.this, HomePage.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
 
-                mRootRef.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            pd.dismiss();
-                            Toast.makeText(RegisterActivity.this, "Register is Successful", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(RegisterActivity.this, HomePage.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                });
             }
 
         }).addOnFailureListener(new OnFailureListener() {
@@ -125,16 +105,6 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//            window.setStatusBarColor(Color.TRANSPARENT);
-            window.setStatusBarColor(getResources().getColor(R.color.register_bk_color));
-        }
     }
 
     public void onLoginClick(View view) {
